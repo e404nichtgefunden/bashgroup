@@ -4,16 +4,16 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
 
 BOT_TOKEN = '7934534008:AAGppGU3X5lpvwrcu5xL2v30zkpL5Jz6fY4'
-ALLOWED_GROUPS = -1002573717371
+ALLOWED_USER_ID = -1002573717371
 
 # Store user's current working directory
 current_dir = os.path.expanduser("~")  # Default: home directory
 
 async def handle_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global current_dir
-    chat_id = update.effective_message.chat_id
-    if chat_id != ALLOWED_GROUPS:
-        bot.reply_to(message, "❌ HAYO MAU NGAPAIN, BUY CHAT AJA : @KECEE_PYRITE.")
+    user_id = update.effective_user.id
+    if user_id != ALLOWED_USER_ID:
+        await update.message.reply_text("Kamu siapa?")
         return
 
     command = update.message.text.strip()

@@ -11,7 +11,7 @@ current_dir = os.path.expanduser("~")  # Default: home directory
 
 async def handle_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global current_dir
-    chat_id = update.effective_chat_id
+    chat_id = update.effective.chat_id
     if chat_id != ALLOWED_USER_ID:
         await update.message.reply_text("Kamu siapa?")
         return
